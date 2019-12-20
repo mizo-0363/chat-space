@@ -1,0 +1,15 @@
+current directory: /Users/mizo_0363/projects/chat-space/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+/Users/mizo_0363/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20191220-47341-1x1vn0h.rb extconf.rb
+creating Makefile
+
+current directory: /Users/mizo_0363/projects/chat-space/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/mizo_0363/projects/chat-space/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/mizo_0363/projects/chat-space/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20191220-47341-55qovb
