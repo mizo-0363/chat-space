@@ -23,8 +23,8 @@
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|content|string|null: false|
-|image  |string|null: false|
+|content|string|---|
+|image  |string|---|
 |group|references|null: false, foreign_key: true|
 |user |references|null: false, foreign_key: true|
 
