@@ -23,10 +23,10 @@
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|content|string|----|
-|image  |string|----|
-|group|references|foreign_key: true|
-|user |references|foreign_key: true|
+|content|string|---|
+|image  |string|---|
+|group|references|null: false, foreign_key: true|
+|user |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
