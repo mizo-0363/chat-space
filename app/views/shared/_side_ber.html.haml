@@ -1,0 +1,21 @@
+.side_ber
+  .side_ber_header
+    .side_ber_header_box
+      %h3
+        = current_user.name
+      %ul
+        %li{class: "edit"}
+          = link_to new_group_path, class: "btn" do
+            %i.fas.fa-edit
+        %li{class: "config"}
+          = link_to edit_user_path(current_user), class: "btn" do
+            %i.fas.fa-cog
+
+  .groups
+    - current_user.groups.each do |group|
+      .side_group
+        = link_to '#' do
+          .side_group_name
+            = group.name
+          .side_group_message
+            メッセージはまだありません
