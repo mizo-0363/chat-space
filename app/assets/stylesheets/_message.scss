@@ -46,13 +46,14 @@ $white_color: #eeeeee;
     padding: 20px 20px 0;
     .side_group {
       margin-bottom: 40px;
-      color: $white_color;
       &_name {
         font-size: 15px;
         margin-bottom: 5px;
+        color: $white_color;
       }
       &_message {
         font-size: 11px;
+        color: $white_color;
       }
     }
   }
@@ -157,4 +158,4 @@ $white_color: #eeeeee;
       }
     }
   }
-}
+

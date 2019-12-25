@@ -12,7 +12,7 @@
             %i.fas.fa-cog
 
   .groups
-    - current_user.groups.each do |group|
+    - current_user.group.each do |group|
       .side_group
         = link_to '#' do
           .side_group_name
