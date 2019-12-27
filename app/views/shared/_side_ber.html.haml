@@ -12,10 +12,10 @@
             %i.fas.fa-cog
 
   .groups
-    - current_user.group.each do |group|
+    - current_user.groups.each do |group|
       .side_group
-        = link_to '#' do
+        = link_to group_messages_path(group) do
           .side_group_name
             = group.name
           .side_group_message
-            メッセージはまだありません
+            = group.show_last_message

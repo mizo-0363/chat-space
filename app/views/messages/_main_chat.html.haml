@@ -1,34 +1,22 @@
 .main_chat
   .main_header
     .main_header_group
-      %p test
+      %p= @group.name
       %ul
         Member :
-        %li masa
-    = link_to "Edit", "#", class: "main_header_edit"
+        - @group.users.each do |user|
+          %li= user.name
+    = link_to "Edit", edit_group_path(@group), class: "main_header_edit"
 
   .messages
-    .message_box
-      .message_box_info
-        %p{class: "message_box_info_name"} masa
-        %p{class: "message_box_info_date"} 2019/12/23(火)
-      %p{class: "message_box_text"} おはよう！
-    .message_box
-      .message_box_info
-        %p{class: "message_box_info_name"} masa
-        %p{class: "message_box_info_date"} 2019/12/23(火)
-      %p{class: "message_box_text"} こんにちは！
-    .message_box
-      .message_box_info
-        %p{class: "message_box_info_name"} masa
-        %p{class: "message_box_info_date"} 2019/12/23(火)
-      %p{class: "message_box_text"} こんばんは！
+    = render @messages
 
-  .footer
-    %form.new_message
+  .message
+    = form_for [@group, @message] do |f|
       .input_box
-        %input{type: "text", placeholder: "type a message", class: "input_box_text"}
-        %label{class: "input_box_image"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "input_box_image_file"}
-      %input{type: "submit", value: "Send", class: "submit_btn"}
+        = f.text_field :content, class: "input_box_text", placeholder: "type a message"
+        .input_box_icon
+          = f.label :image, class: "input_box_icon_image" do
+            = icon('fas', 'image')
+            = f.file_field :image, class: "input_box_icon_file"
+      = f.submit 'Send', class: 'new_message_submit'
