@@ -102,6 +102,7 @@ $white_color: #eeeeee;
     background-color: #fafafa;
     height: calc(100vh - 100px - 90px);
     padding: 35px 40px;
+    overflow: scroll;
     .message_box {
       padding-bottom: 46px;
       &_info {
