@@ -8,4 +8,4 @@
     - if message.content.present?
       %p.message_box_text
         = message.content
-    = image_tag message.image.url, class: "message_box_image" if message.image.present?
+    = image_tag message.image.url if message.image.present?
