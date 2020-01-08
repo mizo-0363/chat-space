@@ -60,7 +60,9 @@ $(document).on('turbolinks:load', function () {
       .fail(function(data){
         alert('エラーが発生したためメッセージは送信できませんでした');
       })
-      return false;
+      .always(function(data){
+        $('.new_message_submit').prop('disabled', false);
+      })
   })
   var reloadMessages = function() {
     last_message_id = $('.message_box:last').data("message-id");
