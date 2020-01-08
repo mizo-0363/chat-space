@@ -13,5 +13,5 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory  = 'mizo-chatspaceimage'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/mizo-chatspaceimage'
+  config.asset_host = 'https://mizo-chatspaceimage.s3.amazonaws.com'
 end
