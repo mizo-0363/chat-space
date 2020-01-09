@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(function () {
   function addUser(user) {
     let html = `
       <div class="chat-group-user clearfix">
@@ -29,19 +29,28 @@ $(document).on('turbolinks:load', function() {
     let html = `<input value="${userId}" name="group[user_ids][]" type="hidden" id="group_user_ids_${userId}" />`;
     $(`#${userId}`).append(html);
   }
-  $("#user-search-field").on("keyup", function() {
+  $("#user-search-field").on("keyup", function () {
     let input = $("#user-search-field").val();
+    let group_id = $('.chat__group_id').val();
+
+    // var selectedmembers = [];
+    // selectedmembers.length = 0;
+
+    // $(".chat-group-form__field").each(function (){
+    //   selectedmembers.push($(this).attr("ids"))
+    // })
+
     $.ajax({
-      type: "GET",
-      url: "/users",
-      data: { keyword: input },
-      dataType: "json"
-    })
-      .done(function(users) {
+    type: "GET",
+    url: "/users",
+    data: { keyword: input, groupId: group_id},
+    dataType: "json"
+  })
+      .done(function (users) {
         $("#user-search-result").empty();
 
         if (users.length !== 0) {
-          users.forEach(function(user) {
+          users.forEach(function (user) {
             addUser(user);
           });
         } else if (input.length == 0) {
@@ -50,22 +59,22 @@ $(document).on('turbolinks:load', function() {
           addNoUser();
         }
       })
-      .fail(function() {
+      .fail(function () {
         alert("通信エラーです。ユーザーが表示できません。");
       });
-  });
-  $(document).on("click", ".chat-group-user__btn--add", function() {
-    const userName = $(this).attr("data-user-name");
-    const userId = $(this).attr("data-user-id");
-    $(this)
-      .parent()
-      .remove();
-    addDeleteUser(userName, userId);
-    addMember(userId);
-  });
-  $(document).on("click", ".chat-group-user__btn--remove", function() {
-    $(this)
-      .parent()
-      .remove();
-  });
+});
+$(document).on("click", ".chat-group-user__btn--add", function () {
+  const userName = $(this).attr("data-user-name");
+  const userId = $(this).attr("data-user-id");
+  $(this)
+    .parent()
+    .remove();
+  addDeleteUser(userName, userId);
+  addMember(userId);
+});
+$(document).on("click", ".chat-group-user__btn--remove", function () {
+  $(this)
+    .parent()
+    .remove();
+});
 });
