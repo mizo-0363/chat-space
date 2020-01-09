@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
 
   def index
-    return nil if params[:keyword] == ""
-    @users = User.where(['name LIKE ?', "%#{params[:keyword]}%"] ).where.not(id: current_user.id).limit(10)
+    if params[:groupId].present?
+      @group = Group.find(params[:groupId])
+      @users = User.where(['name LIKE ?', "%#{params[:keyword]}%"] ).where.not(id: current_user.id, id: @group.users.ids).limit(10)
+    else
+      @users = User.where(['name LIKE ?', "%#{params[:keyword]}%"] ).where.not(id: current_user.id).limit(10)
+    end
     respond_to do |format|
-      format.html
       format.json
     end
   end
@@ -25,4 +28,15 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email)
     end
+
+    # def selectedmembers
+    #   selectedmembers = []
+    #   selectedmembers << current_user.id
+    #   if params[:selectedmembers]
+    #     params[:selectedmembers].map do |electedmember|
+    #       selectedmembers << electedmember
+    #     end
+    #   end
+    #   return selectedmembers
+    # end
 end
